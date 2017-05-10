@@ -78,7 +78,7 @@ gulp.task("svg", () => {
 
 gulp.task("netlify-confs", () => {
   return gulp
-    .src("site/_redirects")
+    .src("netlify/**")
     .pipe(gulp.dest('./dist/'));
 });
 
