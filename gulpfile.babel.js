@@ -76,7 +76,13 @@ gulp.task("svg", () => {
     .pipe(gulp.dest("site/layouts/partials/"));
 });
 
-gulp.task("server", ["hugo", "css", "js", "svg", "cms"], () => {
+gulp.task("netlify-confs", () => {
+  return gulp
+    .src("site/_redirects")
+    .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task("server", ["hugo", "css", "js", "svg", "cms", "netlify-confs"], () => {
   browserSync.init({
     server: {
       baseDir: "./dist"
@@ -87,6 +93,7 @@ gulp.task("server", ["hugo", "css", "js", "svg", "cms"], () => {
   gulp.watch("./src/cms/*", ["cms"]);
   gulp.watch("./site/static/img/icons/*.svg", ["svg"]);
   gulp.watch("./site/**/*", ["hugo"]);
+  gulp.watch("./site/_redirects", ["netlify-confs"]);
 });
 
 function buildSite(cb, options) {
