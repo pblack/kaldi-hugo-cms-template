@@ -32,7 +32,7 @@ gulp.task("cms", () => {
     .pipe(browserSync.stream());
 });
 
-gulp.task("build", ["css", "js", "hugo", "cms"]);
+gulp.task("build", ["css", "js", "hugo", "cms", "netlify-confs"]);
 gulp.task("build-preview", ["css", "js", "hugo-preview"]);
 
 gulp.task("css", () => (
@@ -82,7 +82,7 @@ gulp.task("netlify-confs", () => {
     .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task("server", ["hugo", "css", "js", "svg", "cms", "netlify-confs"], () => {
+gulp.task("server", ["hugo", "css", "js", "svg", "cms"], () => {
   browserSync.init({
     server: {
       baseDir: "./dist"
@@ -93,7 +93,6 @@ gulp.task("server", ["hugo", "css", "js", "svg", "cms", "netlify-confs"], () => 
   gulp.watch("./src/cms/*", ["cms"]);
   gulp.watch("./site/static/img/icons/*.svg", ["svg"]);
   gulp.watch("./site/**/*", ["hugo"]);
-  gulp.watch("./site/_redirects", ["netlify-confs"]);
 });
 
 function buildSite(cb, options) {
