@@ -5,7 +5,8 @@ image: /img/Screen Shot 2017-05-02 at 2.14.18 PM.png
 heading: sadfasdf
 description: sadfasdf
 main:
-  description: |-
+  heading: adfsadf
+  description: |
     asfdasfdsafdsafdsadfsdfasfdsadfasfd
 
     sadfasdfasdffs
